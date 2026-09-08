@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Administracion de notebooks de un laboratorio informatico">
+    <link rel="stylesheet" href="style.css">
+    <title>Laboratorio de Informatica</title>
+</head>
+<body>
+    <header class="encabezado">
+        <div class="contenedor">
+            <p class="etiqueta">Gestion de equipos</p>
+            <h1>Laboratorio de Informatica</h1>
+            <p>Administra las notebooks disponibles en el laboratorio.</p>
+        </div>
+    </header>
+
+    <main class="contenedor contenido-principal">
+        <section class="panel" aria-labelledby="titulo-formulario">
+            <div class="titulo-seccion">
+                <h2 id="titulo-formulario">Agregar notebook</h2>
+                <p id="texto-formulario">Completa los datos del equipo.</p>
+            </div>
+
+            <form id="formulario-notebook" novalidate>
+                <div class="grilla-formulario">
+                    <div class="campo">
+                        <label for="id">ID del equipo</label>
+                        <input type="text" id="id" name="id" placeholder="Ej: NB-001" required>
+                        <small class="mensaje-error" data-error="id"></small>
+                    </div>
+                    <div class="campo">
+                        <label for="marca">Marca</label>
+                        <input type="text" id="marca" name="marca" placeholder="Ej: Lenovo" required>
+                        <small class="mensaje-error" data-error="marca"></small>
+                    </div>
+                    <div class="campo">
+                        <label for="modelo">Modelo</label>
+                        <input type="text" id="modelo" name="modelo" placeholder="Ej: ThinkPad E14" required>
+                        <small class="mensaje-error" data-error="modelo"></small>
+                    </div>
+                    <div class="campo">
+                        <label for="estado">Estado</label>
+                        <select id="estado" name="estado" required>
+                            <option value="">Seleccionar estado</option>
+                            <option value="Disponible">Disponible</option>
+                            <option value="En uso">En uso</option>
+                            <option value="En reparacion">En reparacion</option>
+                        </select>
+                        <small class="mensaje-error" data-error="estado"></small>
+                    </div>
+                    <div class="campo">
+                        <label for="bateriaSalud">Salud de bateria (%)</label>
+                        <input type="number" id="bateriaSalud" name="bateriaSalud" min="0" max="100" placeholder="Ej: 95" required>
+                        <small class="mensaje-error" data-error="bateriaSalud"></small>
+                    </div>
+                    <div class="campo">
+                        <label for="procesador">Procesador</label>
+                        <input type="text" id="procesador" name="procesador" placeholder="Ej: Intel Core i5" required>
+                        <small class="mensaje-error" data-error="procesador"></small>
+                    </div>
+                    <div class="campo">
+                        <label for="almacenamiento">Almacenamiento (GB)</label>
+                        <input type="number" id="almacenamiento" name="almacenamiento" min="1" step="1" placeholder="Ej: 512" required>
+                        <small class="mensaje-error" data-error="almacenamiento"></small>
+                    </div>
+                </div>
+                <div class="acciones-formulario">
+                    <button class="boton boton-principal" type="submit" id="boton-guardar">Guardar notebook</button>
+                    <button class="boton boton-secundario oculto" type="button" id="boton-cancelar">Cancelar edicion</button>
+                </div>
+                <p id="mensaje-general" class="mensaje-general" role="status"></p>
+            </form>
+        </section>
+
+        <section class="barra-herramientas" aria-labelledby="titulo-equipos">
+            <div>
+                <h2 id="titulo-equipos">Equipos registrados</h2>
+                <p>Busca por ID, marca, modelo o procesador.</p>
+            </div>
+            <label class="buscador" for="busqueda">
+                <span>Buscar equipos</span>
+                <input type="search" id="busqueda" placeholder="Escribe para filtrar...">
+            </label>
+        </section>
+
+        <section class="resumen" aria-label="Resumen del laboratorio">
+            <div class="dato-resumen">
+                <span class="dato-etiqueta">Equipos visibles</span>
+                <strong id="cantidad-equipos">0</strong>
+            </div>
+            <div class="dato-resumen dato-destacado">
+                <span class="dato-etiqueta">Almacenamiento total</span>
+                <strong><span id="almacenamiento-total">0</span> GB</strong>
+            </div>
+        </section>
+
+        <section aria-labelledby="titulo-lista">
+            <h2 id="titulo-lista" class="solo-lectura">Lista de notebooks</h2>
+            <div id="lista-equipos" class="grilla-equipos"></div>
+            <p id="mensaje-vacio" class="mensaje-vacio">Todavia no hay notebooks registradas.</p>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <p>Administracion del laboratorio informatico</p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
